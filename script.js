@@ -37,7 +37,7 @@ featureCards.forEach(card => {
 });
 
 // Get Started button functionality
-document.querySelector('.cta-button').addEventListener('click', () => {
+document.querySelector('.cta-button')?.addEventListener('click', () => {
     alert('Redirecting to signup page...');
     // In a real application: window.location.href = '/signup';
 });
@@ -84,34 +84,23 @@ function togglePasswordVisibility(inputElement, iconElement) {
     }
 }
 
-// Handle form submissions
-//function handleLoginSubmit(e) {
-//   e.preventDefault();
-  //  const email = document.getElementById('email').value;
-    //const password = document.getElementById('password').value;
-    //
-    // In a real app, you would send this to your backend
-    //console.log('Login attempt with:', { email, password });
-    
-    // For demo purposes, show a success message
-    //alert('Login successful! Redirecting to dashboard...');
-    //window.location.href = 'index.html'; // Redirect to homepage after login
-//}
-// Update the handleLoginSubmit function in script.js
+// Handle login form submission
 function handleLoginSubmit(e) {
     e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     
-    // Check for dummy credentials
+    // Check for dummy credentials (accepts either email or phone as username)
     if ((email === 'shahriarsuzi@gmail.com' || email === '12345678') && password === '12345678') {
-        alert('Login successful! Redirecting to dashboard...');
-        window.location.href = 'dashboard.html'; // Redirect to dashboard after login
+        // Store login state
+        localStorage.setItem('isLoggedIn', 'true');
+        // Redirect to dashboard
+        window.location.href = 'dashboard.html';
     } else {
-        alert('Invalid credentials! Try: email=shahriarsuzi@gmail.com, password=12345678');
+        alert('Invalid credentials!\n\nTry these demo credentials:\nEmail/Phone: shahriarsuzi@gmail.com or 12345678\nPassword: 12345678');
     }
 }
-//edited 
+
 function handleSignupSubmit(e) {
     e.preventDefault();
     const name = document.getElementById('fullName').value;
@@ -135,33 +124,33 @@ function handleSignupSubmit(e) {
 }
 
 // Event Listeners
-loginTab.addEventListener('click', () => switchForm('login'));
-signupTab.addEventListener('click', () => switchForm('signup'));
-goToSignup.addEventListener('click', (e) => {
+loginTab?.addEventListener('click', () => switchForm('login'));
+signupTab?.addEventListener('click', () => switchForm('signup'));
+goToSignup?.addEventListener('click', (e) => {
     e.preventDefault();
     switchForm('signup');
 });
-goToLogin.addEventListener('click', (e) => {
+goToLogin?.addEventListener('click', (e) => {
     e.preventDefault();
     switchForm('login');
 });
 
 // Password visibility toggles
-togglePassword.addEventListener('click', () => {
+togglePassword?.addEventListener('click', () => {
     togglePasswordVisibility(passwordInput, togglePassword);
 });
 
-toggleSignupPassword.addEventListener('click', () => {
+toggleSignupPassword?.addEventListener('click', () => {
     togglePasswordVisibility(signupPasswordInput, toggleSignupPassword);
 });
 
-toggleConfirmPassword.addEventListener('click', () => {
+toggleConfirmPassword?.addEventListener('click', () => {
     togglePasswordVisibility(confirmPasswordInput, toggleConfirmPassword);
 });
 
 // Form submissions
-loginForm.addEventListener('submit', handleLoginSubmit);
-signupForm.addEventListener('submit', handleSignupSubmit);
+loginForm?.addEventListener('submit', handleLoginSubmit);
+signupForm?.addEventListener('submit', handleSignupSubmit);
 
 // Initialize form to login by default
 switchForm('login');

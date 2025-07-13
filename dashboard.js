@@ -522,3 +522,9 @@ document.querySelector('#complaints .btn-primary')?.addEventListener('click', fu
         attachActionButtonListeners();
     });
 });
+
+// Add logout functionality
+document.querySelector('.menu-item:last-child')?.addEventListener('click', function() {
+    localStorage.removeItem('isLoggedIn');
+    window.location.href = 'login.html';
+});
