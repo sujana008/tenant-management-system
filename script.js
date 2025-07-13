@@ -85,19 +85,33 @@ function togglePasswordVisibility(inputElement, iconElement) {
 }
 
 // Handle form submissions
+//function handleLoginSubmit(e) {
+//   e.preventDefault();
+  //  const email = document.getElementById('email').value;
+    //const password = document.getElementById('password').value;
+    //
+    // In a real app, you would send this to your backend
+    //console.log('Login attempt with:', { email, password });
+    
+    // For demo purposes, show a success message
+    //alert('Login successful! Redirecting to dashboard...');
+    //window.location.href = 'index.html'; // Redirect to homepage after login
+//}
+// Update the handleLoginSubmit function in script.js
 function handleLoginSubmit(e) {
     e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     
-    // In a real app, you would send this to your backend
-    console.log('Login attempt with:', { email, password });
-    
-    // For demo purposes, show a success message
-    alert('Login successful! Redirecting to dashboard...');
-    window.location.href = 'index.html'; // Redirect to homepage after login
+    // Check for dummy credentials
+    if ((email === 'shahriarsuzi@gmail.com' || email === '12345678') && password === '12345678') {
+        alert('Login successful! Redirecting to dashboard...');
+        window.location.href = 'dashboard.html'; // Redirect to dashboard after login
+    } else {
+        alert('Invalid credentials! Try: email=shahriarsuzi@gmail.com, password=12345678');
+    }
 }
-
+//edited 
 function handleSignupSubmit(e) {
     e.preventDefault();
     const name = document.getElementById('fullName').value;
